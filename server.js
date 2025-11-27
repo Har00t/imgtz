@@ -71,8 +71,8 @@ app.post('/screenshot', async (req, res) => {
             timeout: 60000
         });
 
-        // Wait a bit for fonts/images to load
-        await page.waitForTimeout(2000);
+        // Wait a bit for fonts/images to load (using setTimeout instead of deprecated waitForTimeout)
+        await new Promise(resolve => setTimeout(resolve, 2000));
 
         console.log('Taking screenshot...');
         // Take screenshot
